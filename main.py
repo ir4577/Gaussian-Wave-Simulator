@@ -1,28 +1,29 @@
-from src.constants import NUM_POINTS, X_MIN, X_MAX
+
+#Entry point for the Gaussian Wave Simulator.
+from src.constants import (
+    INITIAL_POSITION,
+    INITIAL_WAVENUMBER,
+    INITIAL_WIDTH,
+    NUM_POINTS,
+    X_MAX,
+    X_MIN,
+)
 from src.grid import Grid
 from src.wavepacket import GaussianWavePacket
-
 def main() -> None:
-    """
-    Run the Gaussian wave packet simulation.
-    """
-
     grid = Grid(
-        xmin=-X_MIN,
+        xmin=X_MIN,
         xmax=X_MAX,
         num_points=NUM_POINTS,
     )
-    print(grid)
-
     packet = GaussianWavePacket(
         grid=grid,
-        x0=-3.0,
-        sigma=0.5,
-        k0=5.0,
+        x0=INITIAL_POSITION,
+        sigma=INITIAL_WIDTH,
+        k0=INITIAL_WAVENUMBER,
     )
-
+    print(grid)
     print(packet)
-
-
+    print(f"Norm = {packet.norm():.6f}")
 if __name__ == "__main__":
     main()
