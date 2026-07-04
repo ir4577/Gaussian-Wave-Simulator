@@ -10,6 +10,8 @@ from src.constants import (
 )
 from src.grid import Grid
 from src.wavepacket import GaussianWavePacket
+from src.potentials import FreeParticle,HarmonicPotential
+
 def main() -> None:
     grid = Grid(
         xmin=X_MIN,
@@ -22,6 +24,8 @@ def main() -> None:
         sigma=INITIAL_WIDTH,
         k0=INITIAL_WAVENUMBER,
     )
+    potential = HarmonicPotential(grid, omega=0.5)
+    print(potential.values)
     print(grid)
     print(packet)
     print(f"Norm = {packet.norm():.6f}")
