@@ -1,7 +1,7 @@
 
 #Defines the one-dimensional computational grid.
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 import numpy as np
 @dataclass(slots=True)
 class Grid:
@@ -18,6 +18,11 @@ class Grid:
     xmin: float
     xmax: float
     num_points: int
+
+
+    x: np.ndarray = field(init=False, repr=False)
+    k: np.ndarray = field(init=False, repr=False)
+    dx: float = field(init=False)
 
     def __post_init__(self) -> None:
         """

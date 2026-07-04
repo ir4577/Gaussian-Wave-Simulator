@@ -6,7 +6,7 @@ Defines Gaussian wave packets for one-dimensional quantum simulations.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass,field
 
 import numpy as np
 
@@ -26,6 +26,7 @@ class GaussianWavePacket:
     x0: float
     sigma: float
     k0: float
+    psi: np.ndarray = field(init=False, repr=False)
 
     def __post_init__(self) -> None:
         """Construct and normalize the wavefunction."""
